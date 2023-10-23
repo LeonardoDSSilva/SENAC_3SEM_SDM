@@ -13,6 +13,9 @@ function Search() {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [selectedModel, setSelectedModel] = useState(null);
 
+	const [modeloVeiculo, setmodeloVeiculo] = useState(null);
+
+
 	return (
 		<Container>
 
@@ -42,17 +45,8 @@ function Search() {
 					<ScrollView style={{width: '100%'}}>
 						<View style={{flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
 							<Text>Qual modelo você procura?</Text>
-
-							<View style={{flexDirection: 'row', gap: 10, padding: 15}}>
-	
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}} onPress={() => setSelectedModel('luxo')}>
-									<Text style={{color: '#000'}}>LUXO</Text>
-								</TouchableOpacity>
-
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}} onPress={() => setSelectedModel('basico')}>
-									<Text style={{color: '#000'}}>BÁSICO</Text>
-								</TouchableOpacity>
-							
+							<View>
+								<ToggleButton data={["LUXO", "POPULAR", "SUV", "SEDAN"]} onSelect={(value) => setmodeloVeiculo(value)} />
 							</View>
 						</View>
 
