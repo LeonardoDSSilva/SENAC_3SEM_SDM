@@ -17,6 +17,12 @@ export default function App() {
           <Tab.Screen name="Home" component={Home}  options={{ headerShown: false }} />
         </Tab.Navigator>
     </NavigationContainer>
+    
+    // <Search/>
+    // <Container>
+    //   <Title>Open up App.js to start working on your ahhhhpp!</Title>
+    //   <StatusBar/>
+    // </Container>
   );
 }
 
