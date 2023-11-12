@@ -1,12 +1,19 @@
 [
 	{
 		"id": "1",
+		"tipo": "Eletrico",
 		"modelo": "iCar",
 		"marca": "Caoa Chery",
+		"categoria": "Hatch",
 		"bateria": "30,8 kWh",
+		"tempoCarga": "7h45",
 		"potencia": "45 kW (61 cv)",
 		"torque": "15,3 kgfm",
 		"autonomia": "197 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg",
@@ -15,12 +22,19 @@
 	},
 	{
 		"id": "2",
+		"tipo": "Eletrico",
 		"modelo": "e-JS1",
 		"marca": "JAC",
+		"categoria": "Hatch",
 		"bateria": "30,2 kWh",
+		"tempoCarga": "7h30",
 		"potencia": "45 kW (62 cv)",
 		"torque": "15,3 kgfm",
 		"autonomia": "161 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -28,12 +42,19 @@
 	},
 	{
 		"id": "3",
+		"tipo": "Eletrico",
 		"modelo": "e-JS4",
 		"marca": "JAC",
+		"categoria": "SUV",
 		"bateria": "55 kWh",
+		"tempoCarga": "8h30",
 		"potencia": "110 kW (150 cv)",
 		"torque": "34,7 kgfm",
 		"autonomia": "256 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -41,12 +62,19 @@
 	},
 	{
 		"id": "4",
+		"tipo": "Eletrico",
 		"modelo": "e-2008",
 		"marca": "Peugeot",
+		"categoria": "SUV",
 		"bateria": "50 kWh",
+		"tempoCarga": "7h30",
 		"potencia": "100 kW (136 cv)",
 		"torque": "26 kgfm",
 		"autonomia": "234 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -54,12 +82,19 @@
 	},
 	{
 		"id": "5",
+		"tipo": "Eletrico",
 		"modelo": "500e",
 		"marca": "Fiat",
+		"categoria": "Hatch",
 		"bateria": "42 kWh",
+		"tempoCarga": "6h",
 		"potencia": "87 kW (118 cv)",
 		"torque": "22,4 kgfm",
 		"autonomia": "227 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -67,12 +102,19 @@
 	},
 	{
 		"id": "6",
+		"tipo": "Eletrico",
 		"modelo": "Kwid E-Tech",
 		"marca": "Renault",
+		"categoria": "Compacto",
 		"bateria": "26,7 kWh",
+		"tempoCarga": "4h",
 		"potencia": "48 kW (65 cv)",
 		"torque": "11,5 kgfm",
 		"autonomia": "185 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -80,12 +122,19 @@
 	},
 	{
 		"id": "7",
+		"tipo": "Eletrico",
 		"modelo": "Dolphin",
 		"marca": "BYD",
+		"categoria": "SUV",
 		"bateria": "44,9 kWh",
+		"tempoCarga": "7h30",
 		"potencia": "94 kW (70 cv)",
 		"torque": "18,3 kgfm",
 		"autonomia": "291 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -93,12 +142,18 @@
 	},
 	{
 		"id": "8",
+		"tipo": "Eletrico",
 		"modelo": "Ora 03",
 		"marca": "GWM",
+		"categoria": "SUV",
 		"bateria": "48 kWh",
 		"potencia": "171 kW (126 cv)",
 		"torque": "25,5 kgfm",
 		"autonomia": "300 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -106,12 +161,19 @@
 	},
 	{
 		"id": "9",
+		"tipo": "Eletrico",
 		"modelo": "Kona Electric",
 		"marca": "Hyundai",
+		"categoria": "SUV",
 		"bateria": "39,2 kWh",
+		"tempoCarga": "6h10",
 		"potencia": "100 kW (136 cv)",
 		"torque": "40,3 kgfm",
 		"autonomia": "252 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
@@ -119,12 +181,19 @@
 	},
 	{
 		"id": "10",
+		"tipo": "Eletrico",
 		"modelo": "e-208",
 		"marca": "Peugeot",
+		"categoria": "Hatch",
 		"bateria": "50 kWh",
+		"tempoCarga": "7h30",
 		"potencia": "100 kW (136 cv)",
 		"torque": "26,5 kgfm",
 		"autonomia": "220 km",
+		"custo" : {
+			"hora": 2,
+			"kwRodado": 0.5
+		},
 		"images": [
 			"https://garagem360.com.br/wp-content/uploads/2022/06/novo-caoa-chery-icar.jpg",
 			"https://carroslancamentos.com.br/wp-content/uploads/2023/06/caoa-chery-icar-design.jpg"
