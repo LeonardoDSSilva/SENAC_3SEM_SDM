@@ -3,11 +3,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Search from './src/pages/Search/Index.js';
+import { Ionicons } from '@expo/vector-icons';
+
+import Search from './src/pages/Search/Search.js';
 import Detalhes from './src/pages/Search/Detail.js';
-import Home from './src/pages/Home/Index.js';
-import Car from './src/pages/Car/Index.js';
-import Account from './src/pages/Account/Index.js';
+import Home from './src/pages/Home/Home.js';
+import Car from './src/pages/Car/Car.js';
+import Account from './src/pages/Account/Account.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -27,19 +29,39 @@ export default function App() {
   return (
 
 	<NavigationContainer>
-		<Tab.Navigator initialRouteName="Buscar">
-		  <Tab.Screen name="Buscar" component={SearchStack} options={{ headerShown: false }}/>
-		  <Tab.Screen name="Home" component={Home}  options={{ headerShown: false }} />
-		  <Tab.Screen name="Meu Carro" component={Car}  options={{ headerShown: false }} />
-		  <Tab.Screen name="Conta" component={Account}  options={{ headerShown: false }} />
+		<Tab.Navigator 
+			initialRouteName="Search"
+			screenOptions={{
+				headerShown: false,
+				tabBarActiveTintColor: '#99CD85',
+				tabBarInactiveTintColor: '#a8a8a8',
+			}}
+		  >
+			
+		  <Tab.Screen name="Buscar" component={SearchStack} 
+		  	options={{ 
+				headerShown: false,
+				tabBarIcon: ({ color, size }) => (
+					<Ionicons name="search" size={size} color={color} />
+			)}}/>
+
+		  <Tab.Screen name="Meu Carro" component={Car} 
+		  	options={{
+				headerShown: false,
+				tabBarIcon: ({ color, size }) => (
+					<Ionicons name="car" size={size} color={color} />
+			)}}/>
+
+		  <Tab.Screen name="Conta" component={Account} 
+		  	options={{
+				headerShown: false,
+				tabBarIcon: ({ color, size }) => (
+					<Ionicons name="person" size={size} color={color} />
+			)}}/>
+			 
 		</Tab.Navigator>
 	</NavigationContainer>
 	
-	// <Search/>
-	// <Container>
-	//   <Title>Open up App.js to start working on your ahhhhpp!</Title>
-	//   <StatusBar/>
-	// </Container>
   );
 }
 
