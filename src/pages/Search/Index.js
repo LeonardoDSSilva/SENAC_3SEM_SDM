@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
 import { Container, Input, LineHorizontal } from '../../assets/styles/teste';
-import { View, TouchableOpacity, Button, Text,  Modal, StyleSheet, ScrollView, FlatList } from 'react-native';
+import { View, TouchableOpacity, Button, Text,  Modal, StyleSheet, ScrollView } from 'react-native';
 
 import carros from '../../data/carros.json';
 
 
-// import { useNavigation } from '@react-navigation/native';
 
 import ToggleButton from '../../components/ToggleButton';
 import Card from '../../components/Card';
 import { Ionicons } from '@expo/vector-icons';
 
 
-
-
-
-
 function Search() {
 
-	// import cars from '../../data/carros.json';
 
-	
-
-
-
-	
+	const tipoVeiculo =  [ ... new Set(carros.map(item => item.categoria))];
+	const tipoMarca =  [ ... new Set(carros.map(item => item.marca))];
+	// let veiculos = carros.filter(item => item.categoria == 'Hatch');
 
 	const [modalVisible, setModalVisible] = useState(false);
+	const [veiculosFiltrados, setVeiculosFiltrados] = useState(carros);
 	const [selectedModel, setSelectedModel] = useState(null);
 
 	const [modeloVeiculo, setmodeloVeiculo] = useState(null);
@@ -35,7 +28,7 @@ function Search() {
 	return (
 		<Container>
 
-		<Input placeholder="Digite aqui..."/>
+		<Input placeholder="Digite aqui..." onChangeText={(text) => setSelectedModel(text)} value={selectedModel} />
 		<View style={{flexDirection: 'row'}}>
 			<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginLeft: 20}} onPress={() => setModalVisible(true)}>
 				<View style={{flexDirection: 'row', gap: 5}}>
@@ -46,20 +39,9 @@ function Search() {
 		</View>
 		<LineHorizontal/>
 
-		<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 900}}>
+		<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 625, bottom: 0}}>
 
-			<Card data={carros}></Card>
-
-			{/* <FlatList
-				data={carros}
-				keyExtractor={(item) => item.id}
-				renderItem={({ item }) => (
-					<View style={{flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
-						<Text>{item.modelo}</Text>
-						<Text>{item.marca}</Text>
-					</View>
-				)}
-			/> */}
+			<Card data={veiculosFiltrados} />
 
 
 		</View>
@@ -71,6 +53,7 @@ function Search() {
 			animationType="slide"
 			visible={modalVisible}
 			transparent={true}
+
 		>
 			<View style={{flex: 1, justifyContent: 'flex-end'}}>
 				<View style={styles.modalView}>
@@ -84,7 +67,7 @@ function Search() {
 						<View style={styles.optionsCard}>
 							<Text>Qual modelo você procura?</Text>
 							<View>
-								<ToggleButton data={["LUXO", "POPULAR", "SUV", "SEDAN"]} onSelect={(value) => setmodeloVeiculo(value)} />
+								<ToggleButton data={ tipoVeiculo } onSelect={(value) => setmodeloVeiculo(value)} />
 							</View>
 						</View>
 
@@ -125,15 +108,14 @@ function Search() {
 					</ScrollView>
 
 					<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-						<Button title="LIMPAR FILTROS"/>
-						<Button title="VER RESULTADOS"/>
+						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginLeft: 20}} onPress={() => setModalVisible(false)}>
+							<Text style={{color: '#000'}}>LIMPAR</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginRight: 20}} onPress={() => setModalVisible(false)}>
+							<Text style={{color: '#000'}}>APLICAR</Text>
+						</TouchableOpacity>
 
 					</View>
-					
-
-
-
-
 
 				</View>
 			</View>
@@ -151,7 +133,7 @@ const styles = StyleSheet.create({
 	
 	  backgroundColor: "#F8FFF8",
 	  borderRadius: 20,
-	  height: 800,
+	  height: 700,
 	  bottom: 0,
 	  padding: 35,
 	  alignItems: "center",
