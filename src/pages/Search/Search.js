@@ -30,7 +30,7 @@ function Search() {
 
 		<Input placeholder="Digite aqui..." onChangeText={(text) => setSelectedModel(text)} value={selectedModel} />
 		<View style={{flexDirection: 'row'}}>
-			<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginLeft: 20}} onPress={() => setModalVisible(true)}>
+			<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginLeft: 20}} onPress={() => setModalVisible(true)}>
 				<View style={{flexDirection: 'row', gap: 5}}>
 					<Ionicons name="filter-sharp" size={18} color="#000" />
 					<Text style={{color: '#000'}}>FILTAR</Text>
