@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Input, LineHorizontal } from '../../assets/styles/teste';
 import { View, TouchableOpacity, Button, Text,  Modal, StyleSheet, ScrollView } from 'react-native';
-
-import carros from '../../data/carros.json';
-
-
-
-import ToggleButton from '../../components/ToggleButton';
-import Card from '../../components/Card';
 import { Ionicons } from '@expo/vector-icons';
+
+import Card from '../../components/Card';
+import carros from '../../data/carros.json';
+import ToggleButton from '../../components/ToggleButton';
+
+
+
 
 
 function Search() {
@@ -20,9 +20,34 @@ function Search() {
 
 	const [modalVisible, setModalVisible] = useState(false);
 	const [veiculosFiltrados, setVeiculosFiltrados] = useState(carros);
-	const [selectedModel, setSelectedModel] = useState(null);
 
-	const [modeloVeiculo, setmodeloVeiculo] = useState(null);
+	const [marcaVeiculo, setmarcaVeiculo] = useState(null);
+	const [categoriaVeiculo, setcategoriaVeiculo] = useState(null);
+
+	const [selectedModel, setSelectedModel] = useState('');
+
+	const aplicarFiltros = () => {
+		let veiculosFiltrados = carros;
+	   
+		if (marcaVeiculo) {
+			veiculosFiltrados = veiculosFiltrados.filter(item => item.marca === marcaVeiculo);
+		}
+		
+		if(categoriaVeiculo){
+			
+			veiculosFiltrados = veiculosFiltrados.filter(item => item.categoria === categoriaVeiculo);
+		}
+	   
+		setVeiculosFiltrados(veiculosFiltrados);
+		setModalVisible(false);
+	   };
+
+	const limparFiltros = () => {
+		setmarcaVeiculo(null);
+		setcategoriaVeiculo(null);
+		setVeiculosFiltrados(carros);
+		setModalVisible(false);
+	}
 
 
 	return (
@@ -46,9 +71,6 @@ function Search() {
 
 		</View>
 
-
-
-
 		<Modal
 			animationType="slide"
 			visible={modalVisible}
@@ -57,61 +79,38 @@ function Search() {
 		>
 			<View style={{flex: 1, justifyContent: 'flex-end'}}>
 				<View style={styles.modalView}>
-					<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-						<Text>FILTROS</Text>
-						<Button title="X" onPress={() => setModalVisible(false)}/>
+					<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: 20}}>
+						<Text
+							style={styles.modalText}
+						>FILTROS</Text>
+						<TouchableOpacity style={{backgroundColor: '#99CD85', borderRadius: 50, padding: 10
+					}} onPress={() => setModalVisible(false)}>
+							<Ionicons name="close" size={15} color="#000" onPress={() => setModalVisible(false)} />
+						</TouchableOpacity>
 					</View>
 
 					<ScrollView style={{width: '100%'}}>
 
 						<View style={styles.optionsCard}>
-							<Text>Qual modelo você procura?</Text>
+							<Text style={styles.subtitle}>Tipo de veículo</Text>
 							<View>
-								<ToggleButton data={ tipoVeiculo } onSelect={(value) => setmodeloVeiculo(value)} />
+								<ToggleButton data={ tipoVeiculo } onSelect={(value) => setcategoriaVeiculo(value)} />
 							</View>
 						</View>
 
-						<View style={{flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
-							<Text>Qual modelo você procura?</Text>
-
-							<View style={{flexDirection: 'row', gap: 10, padding: 15}}>
-	
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}}>
-									<Text style={{color: '#000'}}>CARRO</Text>
-								</TouchableOpacity>
-
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}}>
-									<Text style={{color: '#000'}}>MOTO</Text>
-								</TouchableOpacity>
-							
+						<View style={styles.optionsCard}>
+							<Text style={styles.subtitle}>Marca</Text>
+							<View>
+								<ToggleButton data={ tipoMarca } onSelect={(value) => setmarcaVeiculo(value)} />
 							</View>
 						</View>
-						<View style={{flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
-							<Text>Qual modelo você procura?</Text>
-
-							<View style={{flexDirection: 'row', gap: 10, padding: 15}}>
-	
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}}>
-									<Text style={{color: '#000'}}>CARRO</Text>
-								</TouchableOpacity>
-
-								<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, borderRadius: 20}}>
-									<Text style={{color: '#000'}}>MOTO</Text>
-								</TouchableOpacity>
-							
-							</View>
-						</View>
-
-
-					
-
 					</ScrollView>
 
 					<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginLeft: 20}} onPress={() => setModalVisible(false)}>
+						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginLeft: 20}} onPress={() => limparFiltros()}>
 							<Text style={{color: '#000'}}>LIMPAR</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginRight: 20}} onPress={() => setModalVisible(false)}>
+						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginRight: 20}} onPress={() => aplicarFiltros()}>
 							<Text style={{color: '#000'}}>APLICAR</Text>
 						</TouchableOpacity>
 
@@ -145,6 +144,16 @@ const styles = StyleSheet.create({
 
 	  elevation: 5
 	},
+	modalText: {
+	  marginBottom: 15,
+	  textAlign: "center",
+	  fontSize: 24,
+	  fontWeight: 'bold'
+	},
+	subtitle: {
+		fontSize: 18,
+		fontWeight: 'bold',
+	},
 	optionsCard: {
 		backgroundColor: '#F0EEE3',
 		flexDirection: 'column',
@@ -156,6 +165,17 @@ const styles = StyleSheet.create({
 		paddingBottom: 15,
 
 		borderRadius: 20,
+		marginBottom: 20
 	},
-
+	button: {
+		backgroundColor: '#99CD85',
+		padding: 12,
+		paddingLeft: 24,
+		paddingRight: 24,
+		borderRadius: 20,
+		marginLeft: 20
+	},
+	buttonText: {
+		color: '#000'
+	}
   });
