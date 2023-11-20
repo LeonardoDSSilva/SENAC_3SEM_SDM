@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Input, LineHorizontal } from '../../assets/styles/teste';
-import { View, TouchableOpacity, Button, Text,  Modal, StyleSheet, ScrollView } from 'react-native';
+import { View, TouchableOpacity, Dimensions, Text,  Modal, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Card from '../../components/Card';
 import carros from '../../data/carros.json';
 import ToggleButton from '../../components/ToggleButton';
 
-
-
-
+const screenHeight = Dimensions.get('window').height;
 
 function Search() {
 
-
 	const tipoVeiculo =  [ ... new Set(carros.map(item => item.categoria))];
 	const tipoMarca =  [ ... new Set(carros.map(item => item.marca))];
-	// let veiculos = carros.filter(item => item.categoria == 'Hatch');
 
 	const [modalVisible, setModalVisible] = useState(false);
-	const [veiculosFiltrados, setVeiculosFiltrados] = useState(carros);
+	let [veiculosFiltrados, setVeiculosFiltrados] = useState(carros);
 
 	const [marcaVeiculo, setmarcaVeiculo] = useState(null);
 	const [categoriaVeiculo, setcategoriaVeiculo] = useState(null);
+	const [searchText, setSearchText] = useState("");
 
-	const [selectedModel, setSelectedModel] = useState('');
 
 	const aplicarFiltros = () => {
 		let veiculosFiltrados = carros;
@@ -34,7 +30,6 @@ function Search() {
 		}
 		
 		if(categoriaVeiculo){
-			
 			veiculosFiltrados = veiculosFiltrados.filter(item => item.categoria === categoriaVeiculo);
 		}
 	   
@@ -49,11 +44,12 @@ function Search() {
 		setModalVisible(false);
 	}
 
+	 veiculosFiltrados = veiculosFiltrados.filter(carros => carros.modelo.toLowerCase().includes(searchText.toLowerCase()));
 
 	return (
-		<Container>
 
-		<Input placeholder="Digite aqui..." onChangeText={(text) => setSelectedModel(text)} value={selectedModel} />
+		<View style={styles.container1}>
+		<Input placeholder="Digite aqui..." onChangeText={(text) => setSearchText(text)} value={searchText} />
 		<View style={{flexDirection: 'row'}}>
 			<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginLeft: 20}} onPress={() => setModalVisible(true)}>
 				<View style={{flexDirection: 'row', gap: 5}}>
@@ -64,11 +60,8 @@ function Search() {
 		</View>
 		<LineHorizontal/>
 
-		<View style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 625, bottom: 0}}>
-
+		<View style={styles.container}>
 			<Card data={veiculosFiltrados} />
-
-
 		</View>
 
 		<Modal
@@ -113,14 +106,11 @@ function Search() {
 						<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 25, marginRight: 20}} onPress={() => aplicarFiltros()}>
 							<Text style={{color: '#000'}}>APLICAR</Text>
 						</TouchableOpacity>
-
 					</View>
-
 				</View>
 			</View>
 		</Modal>
-
-		</Container>
+		</View>
   );
 };
 
@@ -128,6 +118,16 @@ export default Search;
 
 
 const styles = StyleSheet.create({
+	container1: {
+		top: 30,
+		flex: 1,
+		backgroundColor: '#FFF',
+		alignItems: 'center',
+		gap: 10,
+		width: '100%',
+		padding: 4,
+		paddingtop: 32
+	},
 	modalView: {
 	
 	  backgroundColor: "#F8FFF8",
@@ -137,11 +137,6 @@ const styles = StyleSheet.create({
 	  padding: 35,
 	  alignItems: "center",
 	  shadowColor: "#000",
-	//   shadowOffset: {
-	// 	width: 0,
-	// 	height: 100
-	//   },
-
 	  elevation: 5
 	},
 	modalText: {
@@ -158,7 +153,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#F0EEE3',
 		flexDirection: 'column',
 		gap: 10,
-
 		paddingLeft: 5,
 		paddingRight: 5,
 		paddingTop: 15,
@@ -177,5 +171,13 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		color: '#000'
+	},
+	container: {
+		position: 'absolute',
+		flexDirection: 'row', 
+		justifyContent: 'space-between',
+		width: '100%',
+		height: screenHeight-160,
+		bottom: 0,
 	}
   });
