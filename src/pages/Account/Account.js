@@ -18,44 +18,42 @@ export default function Account(){
 			</View>
 
 			<View style={styles.container1}>
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Dados')}>
 					<Ionicons name="person" size={24} color="#000" />
 					<Text style={styles.text}>Meus dados</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('CNH')}>
 					<Ionicons name="car" size={24} color="#000" />
 					<Text style={styles.text}>Minha CNH</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Cartões')}>
 					<Ionicons name="card" size={24} color="#000" />
 					<Text style={styles.text}>Meus cartões</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Configurações')}>
 					<Ionicons name="settings" size={24} color="#000" />
 					<Text style={styles.text}>Configurações</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Ajuda')}>
 					<Ionicons name="help" size={24} color="#000" />
 					<Text style={styles.text}>Ajuda</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Sair')}>
 					<Ionicons name="exit" size={24} color="#000" />
 					<Text style={styles.text}>Sair</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Excluir conta')}>
 					<Ionicons name="trash" size={24} color="#000" />
 					<Text style={styles.text}>Excluir conta</Text>
 				</TouchableOpacity>
 
 			</View>
-			
-
 		</View>
 	);
 }

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Carousel from '../../components/Carousel';
 
 export default function Detail({ route, navigation }) {
+	const { navigate } = useNavigation();
 
 	const item = route.params ? route.params.item : null;
 	return (
@@ -26,7 +28,7 @@ export default function Detail({ route, navigation }) {
 				<Text>Por km rodado: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.custo.kwRodado)}</Text>
 			</View>
 			<View style={{flexDirection: 'row', justifyContent: 'center', width: '100%', gap: 5}}>
-				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => navigate('Reserva', { item })}>
 					<Text style={{color: '#000'}}>RESERVAR</Text>
 				</TouchableOpacity>
 			</View>
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
 	cardTitle: {
 		fontSize: 24,
 		fontWeight: 'bold',
+		color: '#99CD85',
 	},
 	cardSubtitle: {
 		fontSize: 16,

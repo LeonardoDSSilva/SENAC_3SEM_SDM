@@ -7,7 +7,6 @@ import Card from '../../components/Card';
 import carros from '../../data/carros.json';
 import ToggleButton from '../../components/ToggleButton';
 
-const screenHeight = Dimensions.get('window').height;
 
 function Search() {
 
@@ -48,7 +47,7 @@ function Search() {
 
 	return (
 
-		<View style={styles.container1}>
+		<View style={styles.container}>
 		<Input placeholder="Digite aqui..." onChangeText={(text) => setSearchText(text)} value={searchText} />
 		<View style={{flexDirection: 'row'}}>
 			<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginLeft: 20}} onPress={() => setModalVisible(true)}>
@@ -60,7 +59,7 @@ function Search() {
 		</View>
 		<LineHorizontal/>
 
-		<View style={styles.container}>
+		<View style={styles.cards}>
 			<Card data={veiculosFiltrados} />
 		</View>
 
@@ -118,9 +117,10 @@ export default Search;
 
 
 const styles = StyleSheet.create({
-	container1: {
+	container: {
 		top: 30,
 		flex: 1,
+		flexDirection: 'column',
 		backgroundColor: '#FFF',
 		alignItems: 'center',
 		gap: 10,
@@ -172,12 +172,12 @@ const styles = StyleSheet.create({
 	buttonText: {
 		color: '#000'
 	},
-	container: {
-		position: 'absolute',
+	cards: {
+		flex: 1,
 		flexDirection: 'row', 
 		justifyContent: 'space-between',
 		width: '100%',
-		height: screenHeight-160,
-		bottom: 0,
+		height: 'auto',
+		paddingBottom: 30
 	}
   });

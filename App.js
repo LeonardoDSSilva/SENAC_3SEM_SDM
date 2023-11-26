@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Search from './src/pages/Search/Search.js';
 import Detalhes from './src/pages/Search/Detail.js';
+import Reserva from './src/pages/Search/Reservation.js';
 import Home from './src/pages/Home/Home.js';
 import Car from './src/pages/Car/Car.js';
 import Account from './src/pages/Account/Account.js';
@@ -20,6 +21,7 @@ function SearchStack(){
 		<Stack.Navigator>
 			<Stack.Screen name="Search" component={Search}  options={{ headerShown: false }}/>
 			<Stack.Screen name="Detalhes" component={Detalhes}/>
+			<Stack.Screen name="Reserva" component={Reserva}/>
 	  </Stack.Navigator>
 	);
 }

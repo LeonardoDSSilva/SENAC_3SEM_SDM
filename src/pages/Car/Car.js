@@ -22,15 +22,15 @@ export default function Car() {
 
 
 			<View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 20}}>
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Trancado')}>
 					<Ionicons name="lock-closed" size={24} color="#000" />
 					<Text style={{color: '#000'}}>Trancar</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('Localizado')}>
 					<Ionicons name="locate" size={24} color="#000" />
 					<Text style={{color: '#000'}}>Localizar</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={styles.button} onPress={() => alert('SOS')}>
 					<Ionicons name="battery-full" size={24} color="#000" />
 					<Text style={{color: '#000'}}>SOS</Text>
 				</TouchableOpacity>
@@ -50,7 +50,7 @@ export default function Car() {
 					<Text style={styles.secText}>Km restantes: {myCar.model.autonomia.replace('km', '')* myCar.porcentagemBateria / 100}</Text>
 					<Text style={styles.secText}>Autonomia: {myCar.porcentagemBateria}%</Text>
 				</View>
-				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Recarga')}>
 					<Text style={{color: '#000'}}>PONTOS DE RECARGA</Text>
 				</TouchableOpacity>
 			</View>
@@ -64,12 +64,12 @@ export default function Car() {
 					<Text style={styles.secText}>Locação: {myCar.dataLocacao}</Text>
 					<Text style={styles.secText}>Devolução: {myCar.dataDevolucao}</Text>
 				</View>
-				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Reservado')}>
+				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Extensão')}>
 					<Text style={{color: '#000'}}>EXTENDER</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Reservado')}>
+{/* 				<TouchableOpacity style={{backgroundColor: '#99CD85', padding: 12, paddingLeft: 24, paddingRight: 24, borderRadius: 20, marginRight: 20}} onPress={() => alert('Reservado')}>
 					<Text style={{color: '#000'}}>DEVOLVER</Text>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
 			</View>
 
 		</View>
